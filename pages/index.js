@@ -2,12 +2,19 @@ import React, {Component} from 'react';
 import myContract from '../ethereum/myContract';
 
 class MyDapp extends Component{
+  state = {
+    message:"Retrieving message from the blockchain"
+  };
+
   async componentDidMount(){
-    const c = await myContract.methods.getMessage().call();
-    console.log(c);
+    console.log("myContract follows");
+    console.log(myContract);
+    const message = await myContract.methods.message().call();
+    this.setState({message:message});
+    console.log(message);
   }
   render(){
-    return <h1> Hello! </h1>
+    return <h1>{this.state.message}</h1>
   }
 }
 

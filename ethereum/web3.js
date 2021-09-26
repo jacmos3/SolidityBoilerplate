@@ -1,7 +1,5 @@
 import Web3 from "web3";
-
 let web3;
-require('dotenv').config()
 const providerUrl = process.env.PROVIDER_URL;
 
 if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
@@ -15,11 +13,4 @@ if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
   );
   web3 = new Web3(provider);
 }
-
 export default web3;
-
-
-
-//const provider = new HDWalletProvider(
-//  'south lunar thrive critic absent provide swear object elephant combine come weasel',
-//);

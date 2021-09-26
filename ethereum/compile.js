@@ -7,16 +7,8 @@ const source = fs.readFileSync(myPath, 'utf8');
 
 const myContract = {
     language: 'Solidity',
-    sources: {
-        'MyContract.sol': {
-            content: source
-        }
-    },
-    settings: {
-        outputSelection: {
-            '*': {'*': ['*']}
-        }
-      }
+    sources: {'MyContract.sol': {content: source}},
+    settings: {outputSelection: {'*': {'*': ['*']}}}
 }
 const output = JSON.parse(solc.compile(JSON.stringify(myContract))).contracts;
 //console.log(output);
@@ -41,6 +33,5 @@ if (generateFolder){
 }
 
 //we now export the main contract.
-const { abi: interface, evm: { bytecode: { object } } } =
-output['MyContract.sol'].MyContract;
-module.exports = { interface, object}; // object is the actual name of the bytecode
+const {abi: interface, evm: {bytecode:{object}}} = output['MyContract.sol'].MyContract;
+module.exports = {interface, object}; // object is the actual name of the bytecode
