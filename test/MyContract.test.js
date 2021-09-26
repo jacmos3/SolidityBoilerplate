@@ -10,7 +10,7 @@ const {interface, object:bytecode} = require('../compile');
 
 let myContract;
 let accounts;
-let INITIAL_STRING = "H";
+let INITIAL_STRING = "Hello World!!";
 let FINAL_STRING = "Goodbye World!!";
 
 beforeEach(async () => {
