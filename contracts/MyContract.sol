@@ -1,4 +1,12 @@
-pragma solidity ^0.4.17;
-// linter warnings (red underline) about pragma version can igonored!
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
-// contract code will go here
+contract MyContract {
+  string public message;
+  constructor (string memory initialMessage) {
+    message = initialMessage;
+  }
+  function setMessage(string memory newMessage) public{
+    message = newMessage;
+  }
+}

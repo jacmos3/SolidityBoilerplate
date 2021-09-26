@@ -1,6 +1,27 @@
 const path = require('path');
 const fs = require('fs');
-const lotteryPath = path.resolve(__dirname, 'contracts', 'MyContract.sol');
-const source = fs.readFileSync(lotteryPath, 'utf8');
 const solc = require('solc');
-module.exports = solc.compile(source,1).contracts[':MyContract'];
+const myPath = path.resolve(__dirname, 'contracts', 'MyContract.sol');
+const source = fs.readFileSync(myPath, 'utf8');
+const input = {
+    language: 'Solidity',
+    sources: {
+        'MyContract.sol': {
+            content: source
+        }
+    },
+    settings: {
+        outputSelection: {
+            '*': {
+                '*': ['*']
+            }
+        }
+    }
+  }
+//console.log(JSON.parse(solc.compile(JSON.stringify(input))));
+
+const { abi: interface, evm: { bytecode: { object } } } =
+JSON.parse(solc.compile(JSON.stringify(input))).contracts['MyContract.sol'].MyContract; //
+
+
+module.exports = { interface, object }; // object is the actual name of the bytecode
