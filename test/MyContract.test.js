@@ -6,7 +6,7 @@ const Web3 = require('web3');
 //we now use ganache provider, but in future we should change here to set the real
 const web3 = new Web3(ganache.provider());
 
-const {interface, object:bytecode} = require('../compile');
+const {interface, object:bytecode} = require('../ethereum/compile');
 
 let myContract;
 let accounts;
